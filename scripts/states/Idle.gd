@@ -9,6 +9,8 @@ func process(delta):
 	# if the jump button is pressed, transition into the InAir/Jumping state immediately
 	if player.controls.is_attacking():
 		state_machine.transition_to(Attack.new())
+	elif player.controls.get_movement_vector() != Vector2.ZERO:
+		state_machine.transition_to(Run.new())
 
 func physics_process(delta):
 	pass

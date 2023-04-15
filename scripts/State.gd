@@ -2,7 +2,7 @@ extends Node
 class_name State
 
 @onready var player: Player = get_tree().get_nodes_in_group("player")[0]
-@onready var state_machine
+@onready var state_machine:StateMachine
 @onready var parent = get_parent()
 
 func _init():
