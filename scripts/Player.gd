@@ -14,7 +14,6 @@ func _ready():
 
 func _process(delta):
 	state_machine._process(delta)
-	print(controls.get_movement_vector())
 
 func _physics_process(delta):
 	state_machine._physics_process(delta)
@@ -24,7 +23,7 @@ func play_animation(anim):
 
 func play_directional_animation(anim):
 	var mov_vec = controls.get_movement_vector()
-	var postfix = ""
+	var postfix = "_side"
 	var mirror = false
 	if mov_vec.x != 0 and mov_vec.y < 0:
 		postfix = "_backside"
