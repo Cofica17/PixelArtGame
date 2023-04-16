@@ -3,7 +3,7 @@ class_name Idle
 
 func enter():
 	# set the current animation root state to Crouching
-	player.animated_sprite.play("idle")
+	player.play_directional_animation("idle")
 
 func process(delta):
 	# if the jump button is pressed, transition into the InAir/Jumping state immediately

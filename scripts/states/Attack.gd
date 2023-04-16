@@ -13,7 +13,9 @@ func process(delta):
 	pass
 
 func physics_process(delta):
-	pass
+	if player.controls.is_attacking():
+		player.velocity = player.controls.get_movement_vector() * player.attack_step
+		player.move_and_slide()
 
 func _on_attack_animation_finished():
 	if player.controls.is_attacking() and not combo_end:
