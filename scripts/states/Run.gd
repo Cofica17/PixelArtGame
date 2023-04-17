@@ -16,6 +16,6 @@ func process(delta):
 
 func physics_process(delta):
 	var mov_vec = player.controls.get_movement_vector()
-	var run_speed = player.run_speed
+	var run_speed = player.move_speed
 	player.velocity = mov_vec * run_speed
 	player.move_and_slide()

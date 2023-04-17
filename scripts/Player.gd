@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
-@export var run_speed = 100
+@export var move_speed = 100
 @export var attack_step = 5
 @export var attack_range = 15
 @export var damage = 10
