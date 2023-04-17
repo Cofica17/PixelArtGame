@@ -4,6 +4,7 @@ class_name Player
 @export var run_speed = 100
 @export var attack_step = 5
 @export var attack_range = 15
+@export var damage = 10
 
 @onready var animated_sprite:AnimatedSprite2D = $AnimatedSprite2D
 @onready var hit_area:Area2D = $HitArea

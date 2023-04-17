@@ -48,5 +48,5 @@ func check_hit():
 	hit_area.monitoring = true
 
 func _on_hit_area_body_entered(body):
-	if body is Enemy:
-		body.hit(0)
+	if body is Enemy and not body.dead:
+		body.hit(player.damage)
