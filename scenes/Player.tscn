@@ -1,4 +1,4 @@
-[gd_scene load_steps=153 format=3 uid="uid://b1xlx27ovfbdo"]
+[gd_scene load_steps=155 format=3 uid="uid://b1xlx27ovfbdo"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_smu6r"]
 [ext_resource type="Texture2D" uid="uid://d2xxous7hmdhd" path="res://assets/character/Top Down/attack/Back ConsecutiveSlash.png" id="2_lon86"]
@@ -1095,12 +1095,29 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vrvhn"]
+size = Vector2(14.5, 23.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sxr6n"]
+size = Vector2(8, 27)
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-position = Vector2(200, 100)
 scale = Vector2(2, 2)
 script = ExtResource("1_smu6r")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qd1hc")
-animation = &"idle_side"
+animation = &"attack1_side"
 autoplay = "idle_front"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_vrvhn")
+
+[node name="HitArea" type="Area2D" parent="."]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
+position = Vector2(0.131, 0)
+shape = SubResource("RectangleShape2D_sxr6n")
+
+[connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]

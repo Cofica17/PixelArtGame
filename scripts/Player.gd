@@ -3,11 +3,14 @@ class_name Player
 
 @export var run_speed = 100
 @export var attack_step = 5
+@export var attack_range = 15
 
-@onready var animated_sprite = $AnimatedSprite2D
+@onready var animated_sprite:AnimatedSprite2D = $AnimatedSprite2D
+@onready var hit_area:Area2D = $HitArea
 
 var state_machine = StateMachine.new()
 var controls = Controls.new()
+var cur_anim = "idle"
 
 func _ready():
 	add_child(controls)
@@ -21,6 +24,15 @@ func _physics_process(delta):
 
 func play_animation(anim):
 	animated_sprite.play(anim)
+
+func play_mouse_directional_animation(anim):
+	var look_vec = controls.get_look_vector()
+	
+	var postfix = _get_directional_animation_postfix(look_vec)
+	var mirror = _get_directional_animation_flip_h(look_vec)
+	
+	animated_sprite.play(anim+postfix)
+	animated_sprite.flip_h = mirror
 
 func play_directional_animation(anim):
 	var mov_vec = controls.get_movement_vector()
@@ -50,3 +62,9 @@ func _get_directional_animation_postfix(mov_vec):
 
 func _get_directional_animation_flip_h(mov_vec):
 	return mov_vec.x < 0
+
+func _on_animated_sprite_2d_animation_changed():
+	if not animated_sprite:
+		return
+	
+	cur_anim = animated_sprite.animation
