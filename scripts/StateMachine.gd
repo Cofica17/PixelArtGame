@@ -46,13 +46,13 @@ func _physics_process(delta):
 	# delegate the _physics_process handling to the current state
 	_state.physics_process(delta)
 
-func transition_to(new_state):
+func transition_to(new_state:State):
 	# if there's no node at the specified path, don't do anything
 	if not new_state:
 		return
-
+	
 	# if we're already in the same state or if the node is not a State node, don't do anything
-	if new_state == _state || !(new_state is State):
+	if (_state and new_state.get_script() == _state.get_script()) || !(new_state is State):
 		return
 
 	# exit the current state, set the current to the new state and enter it, and emit transitioned signal

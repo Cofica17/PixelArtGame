@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
+@export var health = 20
 @export var move_speed = 100
 @export var attack_step = 5
 @export var attack_range = 15
@@ -22,6 +23,21 @@ func _process(delta):
 
 func _physics_process(delta):
 	state_machine._physics_process(delta)
+
+func hit(damage):
+	health = max(health-damage, 0.0)
+	if health == 0:
+		death()
+		return
+	
+	var tween = get_tree().create_tween()
+	tween.tween_method(apply_flash, 1.0, 0.0, 0.35).set_trans(Tween.TRANS_SINE)
+
+func death():
+	state_machine.transition_to(Death.new())
+
+func apply_flash(flash):
+	animated_sprite.material.set_shader_parameter("flash", flash)
 
 func play_animation(anim):
 	animated_sprite.play(anim)

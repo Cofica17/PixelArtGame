@@ -1,6 +1,7 @@
-[gd_scene load_steps=155 format=3 uid="uid://b1xlx27ovfbdo"]
+[gd_scene load_steps=164 format=3 uid="uid://b1xlx27ovfbdo"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_smu6r"]
+[ext_resource type="Shader" path="res://assets/shaders/hit_flash_effect.gdshader" id="2_g8ip3"]
 [ext_resource type="Texture2D" uid="uid://d2xxous7hmdhd" path="res://assets/character/Top Down/attack/Back ConsecutiveSlash.png" id="2_lon86"]
 [ext_resource type="Texture2D" uid="uid://dyguuuifxbcat" path="res://assets/character/Top Down/attack/Side ConsecutiveSlash.png" id="2_qgsew"]
 [ext_resource type="Texture2D" uid="uid://bitlns3oqyj35" path="res://assets/character/Top Down/attack/Front ConsecutiveSlash.png" id="3_51y37"]
@@ -10,7 +11,13 @@
 [ext_resource type="Texture2D" uid="uid://nm5eajefx863" path="res://assets/character/Top Down/movement/Side Movement.png" id="5_tktfb"]
 [ext_resource type="Texture2D" uid="uid://ctgmdx1so783r" path="res://assets/character/Top Down/movement/BackSIde Movement.png" id="6_2767x"]
 [ext_resource type="Texture2D" uid="uid://cqxccb74h53g4" path="res://assets/character/Top Down/movement/Front Movement.png" id="7_hc0yh"]
+[ext_resource type="Texture2D" uid="uid://bebbq7k4ncdvx" path="res://assets/character/Top Down/death/Death Front Sprite.png" id="8_4aoov"]
 [ext_resource type="Texture2D" uid="uid://cnqhlrtjug6ya" path="res://assets/character/Top Down/movement/FrontSide Movement.png" id="8_25p28"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rn8o3"]
+shader = ExtResource("2_g8ip3")
+shader_parameter/flash = 0.0
+shader_parameter/flash_color = Color(1, 1, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aawcw"]
 atlas = ExtResource("2_lon86")
@@ -331,6 +338,30 @@ region = Rect2(320, 128, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_5eegl"]
 atlas = ExtResource("2_qgsew")
 region = Rect2(384, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62cla"]
+atlas = ExtResource("8_4aoov")
+region = Rect2(0, 0, 50, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wfay"]
+atlas = ExtResource("8_4aoov")
+region = Rect2(50, 0, 50, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_osioj"]
+atlas = ExtResource("8_4aoov")
+region = Rect2(100, 0, 50, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nsa2m"]
+atlas = ExtResource("8_4aoov")
+region = Rect2(150, 0, 50, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7kne"]
+atlas = ExtResource("8_4aoov")
+region = Rect2(200, 0, 50, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lw5b3"]
+atlas = ExtResource("8_4aoov")
+region = Rect2(250, 0, 50, 52)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_34wgi"]
 atlas = ExtResource("5_0t5a0")
@@ -866,6 +897,29 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_62cla")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7wfay")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_osioj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nsa2m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7kne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lw5b3")
+}],
+"loop": false,
+"name": &"death",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_34wgi")
 }, {
 "duration": 1.0,
@@ -1106,8 +1160,9 @@ scale = Vector2(2, 2)
 script = ExtResource("1_smu6r")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_rn8o3")
 sprite_frames = SubResource("SpriteFrames_qd1hc")
-animation = &"attack1_side"
+animation = &"death"
 autoplay = "idle_front"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

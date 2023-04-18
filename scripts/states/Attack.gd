@@ -4,7 +4,6 @@ class_name Attack
 var combo_end = false
 
 func enter():
-	# set the current animation root state to Crouching
 	player.play_mouse_directional_animation("attack1")
 	player.animated_sprite.animation_finished.connect(_on_attack_animation_finished)
 	player.animated_sprite.frame_changed.connect(_on_attack_animation_frame_finished)
