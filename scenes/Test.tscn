@@ -9,7 +9,7 @@
 [node name="OneEye" parent="." instance=ExtResource("1_cf1gx")]
 
 [node name="Goblin" parent="." instance=ExtResource("2_4eeip")]
-position = Vector2(500, 200)
+position = Vector2(400, 500)
 
 [node name="Player" parent="." instance=ExtResource("1_va8ho")]
 position = Vector2(200, 100)

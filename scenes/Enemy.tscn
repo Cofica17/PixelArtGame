@@ -3,15 +3,24 @@
 [ext_resource type="Script" path="res://scripts/Enemy.gd" id="1_6o32s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jxxwi"]
+resource_local_to_scene = true
 size = Vector2(31, 28)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j5j8x"]
+resource_local_to_scene = true
 radius = 30.0
 
 [node name="Enemy" type="CharacterBody2D"]
 position = Vector2(400, 200)
 motion_mode = 1
 script = ExtResource("1_6o32s")
+health = 20
+move_speed = 100
+damage = 5
+animation_frame_hit = 6
+animation_frame_projectile_spawn = null
+attack_range = 30
+ranged_attack = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 animation = &""
@@ -27,14 +36,10 @@ shape = SubResource("RectangleShape2D_jxxwi")
 position = Vector2(2.294, 2.871)
 shape = SubResource("CircleShape2D_j5j8x")
 
-[node name="HitDetectionArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitDetectionArea"]
-position = Vector2(2.294, 2.871)
-shape = SubResource("CircleShape2D_j5j8x")
-
 [node name="AttackCooldownTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="ProjectileSpawnPoint" type="Node2D" parent="."]
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animation_frame_changed"]

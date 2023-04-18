@@ -1,42 +1,35 @@
-[gd_scene load_steps=40 format=3 uid="uid://jyuhc0blbj3k"]
+[gd_scene load_steps=41 format=3 uid="uid://jyuhc0blbj3k"]
 
 [ext_resource type="PackedScene" uid="uid://ocu43sj2gir2" path="res://scenes/Enemy.tscn" id="1_gtvbs"]
-[ext_resource type="Texture2D" uid="uid://btl1akpfka3pl" path="res://assets/enemies/Flying eye/Attack.png" id="2_7qd88"]
+[ext_resource type="PackedScene" uid="uid://b0h0ilji36grq" path="res://scenes/enemies/one_eye/OneEyeProjectile.tscn" id="2_b8s22"]
+[ext_resource type="Texture2D" uid="uid://dx2y6fqdfj4m1" path="res://assets/enemies/Flying eye/Attack3.png" id="2_l5rjc"]
 [ext_resource type="Texture2D" uid="uid://dsyq0mthfdcsl" path="res://assets/enemies/Flying eye/Death.png" id="3_411l7"]
 [ext_resource type="Texture2D" uid="uid://3uvuur8dn5je" path="res://assets/enemies/Flying eye/Take Hit.png" id="4_fcctq"]
 [ext_resource type="Texture2D" uid="uid://c8klnsmn4epjl" path="res://assets/enemies/Flying eye/Flight.png" id="5_oknt1"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kjjj6"]
-atlas = ExtResource("2_7qd88")
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7ns8"]
+atlas = ExtResource("2_l5rjc")
 region = Rect2(0, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_25nx4"]
-atlas = ExtResource("2_7qd88")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktbwe"]
+atlas = ExtResource("2_l5rjc")
 region = Rect2(150, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ovofr"]
-atlas = ExtResource("2_7qd88")
+[sub_resource type="AtlasTexture" id="AtlasTexture_jutn2"]
+atlas = ExtResource("2_l5rjc")
 region = Rect2(300, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_f4jld"]
-atlas = ExtResource("2_7qd88")
+[sub_resource type="AtlasTexture" id="AtlasTexture_lw2xy"]
+atlas = ExtResource("2_l5rjc")
 region = Rect2(450, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_78mkk"]
-atlas = ExtResource("2_7qd88")
+[sub_resource type="AtlasTexture" id="AtlasTexture_5s1rh"]
+atlas = ExtResource("2_l5rjc")
 region = Rect2(600, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hbnw1"]
-atlas = ExtResource("2_7qd88")
+[sub_resource type="AtlasTexture" id="AtlasTexture_hs1yc"]
+atlas = ExtResource("2_l5rjc")
 region = Rect2(750, 0, 150, 150)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j8yww"]
-atlas = ExtResource("2_7qd88")
-region = Rect2(900, 0, 150, 150)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5t3se"]
-atlas = ExtResource("2_7qd88")
-region = Rect2(1050, 0, 150, 150)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lyucw"]
 atlas = ExtResource("3_411l7")
@@ -142,28 +135,22 @@ region = Rect2(450, 0, 150, 150)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kjjj6")
+"texture": SubResource("AtlasTexture_u7ns8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_25nx4")
+"texture": SubResource("AtlasTexture_ktbwe")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ovofr")
+"texture": SubResource("AtlasTexture_jutn2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_f4jld")
+"texture": SubResource("AtlasTexture_lw2xy")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_78mkk")
+"texture": SubResource("AtlasTexture_5s1rh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hbnw1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j8yww")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5t3se")
+"texture": SubResource("AtlasTexture_hs1yc")
 }],
 "loop": false,
 "name": &"attack",
@@ -265,12 +252,34 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ccgjo"]
+resource_local_to_scene = true
+size = Vector2(31, 28)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ccpyv"]
+resource_local_to_scene = true
+radius = 500.0
+
 [node name="OneEye" instance=ExtResource("1_gtvbs")]
-health = 100
-damage = 0
-attack_range = 120
+health = 20.0
+move_speed = 100.0
+damage = 5.0
+animation_frame_hit = 6.0
+animation_frame_projectile_spawn = 4
+attack_range = 500.0
+ranged_attack = true
+ranged_projectile = ExtResource("2_b8s22")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_qksbp")
-animation = &"idle"
+animation = &"attack"
 autoplay = "idle"
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_ccgjo")
+
+[node name="CollisionShape2D" parent="AttackDetectionArea" index="0"]
+shape = SubResource("CircleShape2D_ccpyv")
+
+[node name="ProjectileSpawnPoint" parent="." index="4"]
+position = Vector2(12, 3)

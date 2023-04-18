@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://due2hwcehlljl"]
+[gd_scene load_steps=38 format=3 uid="uid://due2hwcehlljl"]
 
 [ext_resource type="PackedScene" uid="uid://ocu43sj2gir2" path="res://scenes/Enemy.tscn" id="1_3aaxi"]
 [ext_resource type="Texture2D" uid="uid://bo4lwpmntmll2" path="res://assets/enemies/Goblin/Attack.png" id="2_0tuf5"]
@@ -231,13 +231,31 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y1lqs"]
+resource_local_to_scene = true
+size = Vector2(31, 28)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y8w8f"]
+resource_local_to_scene = true
+radius = 30.0
+
 [node name="Goblin" instance=ExtResource("1_3aaxi")]
-health = 100
-move_speed = 140
+health = 100.0
+move_speed = 140.0
 attack_cooldown = 2.0
-damage = 0
-attack_range = 30
+damage = 7.0
+animation_frame_hit = 6.0
+animation_frame_projectile_spawn = 4
+attack_range = 30.0
+ranged_attack = false
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_3qrak")
+animation = &"attack"
 autoplay = "idle"
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_y1lqs")
+
+[node name="CollisionShape2D" parent="AttackDetectionArea" index="0"]
+shape = SubResource("CircleShape2D_y8w8f")

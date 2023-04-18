@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqmq1b0iywhro"]
+
+[ext_resource type="Script" path="res://scripts/Projectile.gd" id="1_1kh7l"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_grofb"]
+
+[node name="Projectile" type="CharacterBody2D"]
+script = ExtResource("1_1kh7l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_grofb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
