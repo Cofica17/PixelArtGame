@@ -6,7 +6,7 @@
 size = Vector2(31, 28)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j5j8x"]
-radius = 30.7082
+radius = 30.0
 
 [node name="Enemy" type="CharacterBody2D"]
 position = Vector2(400, 200)
@@ -14,7 +14,7 @@ motion_mode = 1
 script = ExtResource("1_6o32s")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-animation = &"attack"
+animation = &""
 autoplay = "fly"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

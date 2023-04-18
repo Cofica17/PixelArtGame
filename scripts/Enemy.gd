@@ -1,3 +1,4 @@
+@tool
 extends CharacterBody2D
 class_name Enemy
 
@@ -6,6 +7,7 @@ class_name Enemy
 @export var attack_cooldown = 1.5
 @export var damage = 5
 @export var animation_frame_hit = 6
+@export var attack_range = 30 : set=_set_attack_range
 
 @onready var player: Player = get_tree().get_nodes_in_group("player")[0]
 @onready var animated_sprite:AnimatedSprite2D = $AnimatedSprite2D
@@ -19,7 +21,14 @@ var dead = false
 func _ready():
 	attack_cooldown_timer.wait_time = attack_cooldown
 
+func _set_attack_range(value):
+	attack_range = value
+	$AttackDetectionArea/CollisionShape2D.shape.radius = attack_range
+
 func _physics_process(delta):
+	if Engine.is_editor_hint():
+		return
+	
 	if dead:
 		return
 	
