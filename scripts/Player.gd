@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
+@export var invincible = false
 @export var health = 20
 @export var move_speed = 100
 @export var attack_step = 5
@@ -25,6 +26,9 @@ func _physics_process(delta):
 	state_machine._physics_process(delta)
 
 func hit(damage):
+	if invincible:
+		return
+	
 	health = max(health-damage, 0.0)
 	if health == 0:
 		death()

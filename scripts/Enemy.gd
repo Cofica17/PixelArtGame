@@ -11,6 +11,7 @@ class_name Enemy
 @export var attack_range:float = 30.0 : set=_set_attack_range
 @export var ranged_attack:bool = false
 @export var ranged_projectile:PackedScene
+@export var only_follow = false
 
 @onready var player: Player = get_tree().get_nodes_in_group("player")[0]
 @onready var animated_sprite:AnimatedSprite2D = $AnimatedSprite2D
@@ -18,6 +19,7 @@ class_name Enemy
 @onready var attack_detection_area:Area2D = $AttackDetectionArea
 @onready var attack_cooldown_timer:Timer = $AttackCooldownTimer
 @onready var projectile_spawn_point:Node2D = $ProjectileSpawnPoint
+@onready var context_based_steering:Node2D = $ContextBasedSteering
 
 var damage_taken = 0
 var dead = false
@@ -40,10 +42,11 @@ func _physics_process(delta):
 	if dead:
 		return
 	
-	if not is_attacking() and not is_hit():
+	if player_in_attack_range():
+		if get_can_attack() and not only_follow:
+			attack()
+	elif not is_attacking() and not is_hit():
 		move()
-	if check_attack():
-		attack()
 
 func attack():
 	animated_sprite.play("attack")
@@ -51,6 +54,7 @@ func attack():
 
 func move():
 	var dir = get_direction_towards_player()
+	dir = context_based_steering.get_direction(dir)
 	velocity = dir * move_speed
 	if velocity.length() != 0.0:
 		animated_sprite.play("run")
@@ -78,15 +82,18 @@ func die():
 func _on_animated_sprite_2d_animation_finished():
 	animated_sprite.play("idle")
 
-func check_attack():
-	if is_hit():return false
-	if not attack_cooldown_timer.is_stopped():return false
-	
+func player_in_attack_range():
 	for body in attack_detection_area.get_overlapping_bodies():
 		if body is Player:
 			return true
 	
 	return false
+
+func get_can_attack():
+	if is_hit():return false
+	if not attack_cooldown_timer.is_stopped():return false
+	
+	return true
 
 func check_player_hit():
 	for body in attack_detection_area.get_overlapping_bodies():

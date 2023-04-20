@@ -261,11 +261,6 @@ resource_local_to_scene = true
 radius = 500.0
 
 [node name="OneEye" instance=ExtResource("1_gtvbs")]
-health = 20.0
-move_speed = 100.0
-damage = 5.0
-animation_frame_hit = 6.0
-animation_frame_projectile_spawn = 4
 attack_range = 500.0
 ranged_attack = true
 ranged_projectile = ExtResource("2_b8s22")
