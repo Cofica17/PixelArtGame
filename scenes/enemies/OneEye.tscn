@@ -1,6 +1,5 @@
-[gd_scene load_steps=41 format=3 uid="uid://jyuhc0blbj3k"]
+[gd_scene load_steps=40 format=3 uid="uid://70wbwt7vjprc"]
 
-[ext_resource type="PackedScene" uid="uid://ocu43sj2gir2" path="res://scenes/Enemy.tscn" id="1_gtvbs"]
 [ext_resource type="PackedScene" uid="uid://b0h0ilji36grq" path="res://scenes/enemies/one_eye/OneEyeProjectile.tscn" id="2_b8s22"]
 [ext_resource type="Texture2D" uid="uid://dx2y6fqdfj4m1" path="res://assets/enemies/Flying eye/Attack3.png" id="2_l5rjc"]
 [ext_resource type="Texture2D" uid="uid://dsyq0mthfdcsl" path="res://assets/enemies/Flying eye/Death.png" id="3_411l7"]
@@ -252,16 +251,16 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ccgjo"]
-resource_local_to_scene = true
-size = Vector2(31, 28)
+[sub_resource type="CircleShape2D" id="CircleShape2D_bur4n"]
+radius = 15.5322
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ccpyv"]
 resource_local_to_scene = true
-radius = 500.0
+radius = 200.0
 
-[node name="OneEye" instance=ExtResource("1_gtvbs")]
-attack_range = 500.0
+[node name="OneEye"]
+enable_context_based_steering = true
+attack_range = 200.0
 ranged_attack = true
 ranged_projectile = ExtResource("2_b8s22")
 
@@ -271,7 +270,8 @@ animation = &"attack"
 autoplay = "idle"
 
 [node name="CollisionShape2D" parent="." index="1"]
-shape = SubResource("RectangleShape2D_ccgjo")
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_bur4n")
 
 [node name="CollisionShape2D" parent="AttackDetectionArea" index="0"]
 shape = SubResource("CircleShape2D_ccpyv")

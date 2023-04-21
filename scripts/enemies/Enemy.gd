@@ -2,6 +2,9 @@
 extends CharacterBody2D
 class_name Enemy
 
+@export var disabled = false
+@export var inactive = false
+@export var enable_context_based_steering = true
 @export var health:float = 20.0
 @export var move_speed:float = 100.0
 @export var attack_cooldown = 1.5
@@ -27,6 +30,7 @@ var _last_dir_towards_player = Vector2.ZERO
 
 func _ready():
 	attack_cooldown_timer.wait_time = attack_cooldown
+	collision_shape.disabled = disabled
 
 func _set_attack_range(value):
 	if not $AttackDetectionArea/CollisionShape2D:
@@ -36,7 +40,7 @@ func _set_attack_range(value):
 	$AttackDetectionArea/CollisionShape2D.shape.radius = attack_range
 
 func _physics_process(delta):
-	if Engine.is_editor_hint():
+	if Engine.is_editor_hint() or inactive:
 		return
 	
 	if dead:
@@ -54,7 +58,8 @@ func attack():
 
 func move():
 	var dir = get_direction_towards_player()
-	dir = context_based_steering.get_direction(dir)
+	if enable_context_based_steering:
+		dir = context_based_steering.get_direction(dir)
 	velocity = dir * move_speed
 	if velocity.length() != 0.0:
 		animated_sprite.play("run")
@@ -78,6 +83,7 @@ func die():
 	animated_sprite.disconnect("animation_finished", _on_animated_sprite_2d_animation_finished)
 	collision_shape.set_deferred("disabled", true)
 	dead = true
+	z_index = -1
 
 func _on_animated_sprite_2d_animation_finished():
 	animated_sprite.play("idle")

@@ -7,9 +7,14 @@ class_name Player
 @export var attack_step = 5
 @export var attack_range = 15
 @export var damage = 10
+@export var dash_distance = 250
+@export var dash_cooldown = 0.8
+@export var dash_speed = 500
 
 @onready var animated_sprite:AnimatedSprite2D = $AnimatedSprite2D
 @onready var hit_area:Area2D = $HitArea
+@onready var dash_cooldown_timer:Timer = $DashCooldownTimer
+@onready var collision_shape:CollisionShape2D = $CollisionShape2D
 
 var state_machine = StateMachine.new()
 var controls = Controls.new()
@@ -89,3 +94,6 @@ func _on_animated_sprite_2d_animation_changed():
 		return
 	
 	cur_anim = animated_sprite.animation
+
+func get_can_dash():
+	return dash_cooldown_timer.is_stopped()

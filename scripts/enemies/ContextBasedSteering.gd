@@ -1,6 +1,5 @@
 extends Node2D
 
-@export var max_speed = 350
 @export var steer_force = 0.1
 @export var look_ahead = 100
 @export var num_rays = 8
@@ -67,9 +66,3 @@ func choose_direction():
 	for i in num_rays:
 		chosen_dir += ray_directions[i] * interest[i]
 	chosen_dir = chosen_dir.normalized()
-
-func _process(delta):
-	queue_redraw()
-
-func _draw():
-	draw_line(Vector2(0,0), chosen_dir*30, Color(255, 0, 0), 1)

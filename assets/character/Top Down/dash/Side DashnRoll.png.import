@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://behw65leqtepp"
-path="res://.godot/imported/BackSide DashnRoll.png-f28fdfbc1ab67915fdccf76b88375859.ctex"
+uid="uid://bgipqnh0hx6yr"
+path="res://.godot/imported/Side DashnRoll.png-ca10759697f72f656cd9e45a9b2438c2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/character/Top Down/BackSide DashnRoll.png"
-dest_files=["res://.godot/imported/BackSide DashnRoll.png-f28fdfbc1ab67915fdccf76b88375859.ctex"]
+source_file="res://assets/character/Top Down/dash/Side DashnRoll.png"
+dest_files=["res://.godot/imported/Side DashnRoll.png-ca10759697f72f656cd9e45a9b2438c2.ctex"]
 
 [params]
 

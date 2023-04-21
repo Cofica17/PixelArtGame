@@ -5,6 +5,7 @@ var _move_vec: Vector2 = Vector2.ZERO
 var _look_vec: Vector2 = Vector2.ZERO
 var _last_dir_move_vec: Vector2 = Vector2.ZERO
 var _is_attacking: bool = false
+var _is_dashing: bool = false
 var _mouse_pos:Vector2 = Vector2.ZERO
 
 func _ready():
@@ -26,6 +27,7 @@ func _process(delta):
 	# in both desktop and touch screen devices the jump flag can be determined via the jump action
 	# same goes for other actions
 	_is_attacking = InputBuffer.is_action_press_buffered("attack")
+	_is_dashing = InputBuffer.is_action_press_buffered("dash")
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -43,4 +45,6 @@ func get_last_directional_movement_vector():
 func is_attacking():
 	return _is_attacking
 
+func is_dashing():
+	return _is_dashing
 
