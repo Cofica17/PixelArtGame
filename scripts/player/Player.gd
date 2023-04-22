@@ -99,3 +99,8 @@ func _on_animated_sprite_2d_animation_changed():
 
 func get_can_dash():
 	return dash_cooldown_timer.is_stopped()
+
+func get_is_critical():
+	var rng = RandomNumberGenerator.new()
+	var my_random_number = rng.randf_range(0.0, 1.0)
+	return my_random_number <= critical_chance

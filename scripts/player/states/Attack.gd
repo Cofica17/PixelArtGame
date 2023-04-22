@@ -48,4 +48,8 @@ func check_hit():
 
 func _on_hit_area_body_entered(body):
 	if body is Enemy and not body.dead:
-		body.hit(player.damage)
+		var damage = player.damage
+		var is_critical = player.get_is_critical()
+		if is_critical:
+			damage *= player.critical_damage
+		body.hit(damage)
