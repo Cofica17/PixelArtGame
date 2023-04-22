@@ -23,6 +23,7 @@ class_name Enemy
 @onready var attack_cooldown_timer:Timer = $AttackCooldownTimer
 @onready var projectile_spawn_point:Node2D = $ProjectileSpawnPoint
 @onready var context_based_steering:Node2D = $ContextBasedSteering
+@onready var damage_number_lbl:Label = $DamageNumber
 
 var damage_taken = 0
 var dead = false
@@ -75,6 +76,7 @@ func hit(damage):
 	animated_sprite.play("take_hit")
 	animated_sprite.frame = 0
 	damage_taken += damage
+	_create_dmg_number_lbl(damage)
 	if damage_taken >= health:
 		die()
 
@@ -84,6 +86,15 @@ func die():
 	collision_shape.set_deferred("disabled", true)
 	dead = true
 	z_index = -1
+
+func _create_dmg_number_lbl(dmg):
+	var lbl:Label = damage_number_lbl.duplicate(true)
+	lbl.text = str(dmg)
+	add_child(lbl)
+	var tween = get_tree().create_tween()
+	tween.tween_property(lbl, "modulate:a", 0.0, 0.4).set_trans(Tween.TRANS_EXPO)
+	tween.parallel().tween_property(lbl, "position:y", lbl.position.y - 10, 0.4).set_trans(Tween.TRANS_EXPO)
+	tween.tween_callback(lbl.queue_free)
 
 func _on_animated_sprite_2d_animation_finished():
 	animated_sprite.play("idle")

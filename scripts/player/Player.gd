@@ -7,6 +7,8 @@ class_name Player
 @export var attack_step = 5
 @export var attack_range = 15
 @export var damage = 10
+@export var critical_chance = 0.15
+@export var critical_damage = 2
 @export var dash_distance = 250
 @export var dash_cooldown = 0.8
 @export var dash_speed = 500

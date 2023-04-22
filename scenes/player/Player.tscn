@@ -1329,7 +1329,6 @@ scale = Vector2(2, 2)
 collision_layer = 5
 motion_mode = 1
 script = ExtResource("1_11p3q")
-invincible = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_rn8o3")
