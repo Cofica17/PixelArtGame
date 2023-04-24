@@ -249,13 +249,14 @@ sprite_frames = SubResource("SpriteFrames_icxmp")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.0210807
+offset = Vector2(-2.334, -7.842)
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(2.5, 8)
+position = Vector2(-1.679, 3.894)
 shape = SubResource("CircleShape2D_cn2oj")
 
 [node name="AttackDetectionArea" parent="." index="2"]
-position = Vector2(0, 5)
+position = Vector2(-4.278, 0.109)
 
 [node name="CollisionShape2D" parent="AttackDetectionArea" index="0"]
 shape = SubResource("CircleShape2D_slk0k")

@@ -1,11 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjwraxgqtvuld"]
+[gd_scene load_steps=2 format=3 uid="uid://c6eyyd5b5gfc"]
 
 [ext_resource type="Script" path="res://scripts/Spell.gd" id="1_6q546"]
 
-[node name="LightningStrike" type="Node2D"]
+[node name="Spell" type="Node2D"]
 script = ExtResource("1_6q546")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-animation = &"cast"
+animation = &""
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://c6hdfymimsdmh"]
 
-[ext_resource type="PackedScene" uid="uid://cjwraxgqtvuld" path="res://scenes/Spell.tscn" id="1_ck6nv"]
+[ext_resource type="PackedScene" uid="uid://c6eyyd5b5gfc" path="res://scenes/spells/Spell.tscn" id="1_ck6nv"]
 [ext_resource type="Texture2D" uid="uid://dp50np8vir6e8" path="res://assets/spells/Lightning.png" id="2_5wdwx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tntlg"]
@@ -86,3 +86,4 @@ animations = [{
 [node name="AnimatedSprite2D" parent="." index="0"]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_1fihk")
+animation = &"cast"

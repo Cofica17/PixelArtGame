@@ -11,6 +11,8 @@ func process(delta):
 		state_machine.transition_to(Idle.new())
 	elif player.controls.is_dashing() and player.get_can_dash():
 		state_machine.transition_to(Dash.new())
+	elif player.controls.is_casting_spell_1():
+		state_machine.transition_to(SpellCast.new())
 	else:
 		player.play_directional_animation("run")
 

@@ -8,3 +8,4 @@
 [node name="Goblin" parent="." instance=ExtResource("1_40cdm")]
 
 [node name="Player" parent="." instance=ExtResource("1_vxies")]
+position = Vector2(100, 100)

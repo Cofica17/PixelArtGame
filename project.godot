@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 InputBuffer="*res://scripts/InputBuffer.gd"
 Projectiles="*res://scripts/Projectiles.gd"
+Game="*res://scripts/Game.gd"
 
 [display]
 

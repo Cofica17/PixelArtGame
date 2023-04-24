@@ -29,7 +29,7 @@ func _process(delta):
 	# same goes for other actions
 	_is_attacking = InputBuffer.is_action_press_buffered("attack")
 	_is_dashing = InputBuffer.is_action_press_buffered("dash")
-	_is_casting_spell_1 = InputBuffer.is_action_press_buffered("spell1")
+	_is_casting_spell_1 = Input.is_action_just_pressed("spell1")
 
 func _input(event):
 	if event is InputEventMouseMotion:

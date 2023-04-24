@@ -24,6 +24,7 @@ var controls = Controls.new()
 var cur_anim = "idle"
 
 func _ready():
+	add_to_group("player")
 	add_child(controls)
 	add_child(state_machine)
 

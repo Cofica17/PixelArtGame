@@ -1,14 +1,13 @@
 extends State
 class_name SpellCast
 
-var spell_1 = preload("res://scenes/player/spells/LightningStrike.tscn")
+var spell_1 = preload("res://scenes/spells/Fireball.tscn")
 
 func enter():
-	pass
 	#player.play_directional_animation("idle")
 	var spell = spell_1.instantiate()
 	player.add_child(spell)
-	spell.cast(player.global_position)
+	spell.cast()
 
 func process(delta):
 	if player.controls.is_attacking():
