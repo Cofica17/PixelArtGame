@@ -30,6 +30,7 @@ var dead = false
 var _last_dir_towards_player = Vector2.ZERO
 
 func _ready():
+	add_to_group("Enemy")
 	attack_cooldown_timer.wait_time = attack_cooldown
 	collision_shape.disabled = disabled
 

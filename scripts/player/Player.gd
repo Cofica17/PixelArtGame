@@ -1,5 +1,6 @@
 extends CharacterBody2D
 class_name Player
+#needs a parent script that will be shared with Enemy script, called CombatEntity
 
 @export var invincible = false
 @export var health = 20
