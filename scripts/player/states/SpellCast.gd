@@ -1,7 +1,7 @@
 extends State
 class_name SpellCast
 
-var spell_1 = preload("res://scenes/spells/Fireball.tscn")
+var spell_1 = preload("res://scenes/spells/Earthquake.tscn")
 
 func enter():
 	#player.play_directional_animation("idle")
