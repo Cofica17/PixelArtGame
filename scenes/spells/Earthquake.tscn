@@ -156,6 +156,9 @@ size = Vector2(89, 63)
 
 [node name="Earthquake" type="Node2D"]
 script = ExtResource("1_lr7o1")
+damage = null
+cooldown = null
+duration = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

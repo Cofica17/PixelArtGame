@@ -1,7 +1,6 @@
 extends Spell
 class_name Earthquake
 
-@export var travel_speed = 250
 @export var damage = 10
 @export var cooldown = 1.0
 @export var duration = 2.0
@@ -13,7 +12,7 @@ var dir
 func cast():
 	super.cast()
 	var player_dir = player.controls.get_look_vector()
-	global_position = player.global_position + 40*player_dir
+	global_position = pl ayer.global_position + 40*player_dir
 	hit_enemies()
 	look_at(get_global_mouse_position())
 
