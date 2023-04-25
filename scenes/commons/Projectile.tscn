@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqmq1b0iywhro"]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://scripts/Projectile.gd" id="1_1kh7l"]
+[ext_resource type="Script" path="res://scripts/commons/Projectile.gd" id="1_1kh7l"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_grofb"]
 

@@ -11,15 +11,15 @@ config_version=5
 [application]
 
 config/name="Pixelart Game"
-run/main_scene="res://scenes/TestEnv.tscn"
+run/main_scene="res://scenes/map/TestEnv.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-InputBuffer="*res://scripts/InputBuffer.gd"
-Projectiles="*res://scripts/Projectiles.gd"
-Game="*res://scripts/Game.gd"
+InputBuffer="*res://scripts/singletons/InputBuffer.gd"
+Projectiles="*res://scripts/commons/Projectiles.gd"
+Game="*res://scripts/singletons/Game.gd"
 
 [display]
 

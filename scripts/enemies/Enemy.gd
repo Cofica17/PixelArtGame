@@ -86,6 +86,7 @@ func die():
 	animated_sprite.disconnect("animation_finished", _on_animated_sprite_2d_animation_finished)
 	collision_shape.set_deferred("disabled", true)
 	dead = true
+	remove_from_group("enemy")
 
 func _create_dmg_number_lbl(dmg):
 	var lbl:Label = damage_number_lbl.duplicate(true)

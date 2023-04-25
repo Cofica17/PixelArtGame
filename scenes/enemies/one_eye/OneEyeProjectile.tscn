@@ -1,6 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://b0h0ilji36grq"]
+[gd_scene load_steps=13 format=3 uid="uid://4pis2tq3u6md"]
 
-[ext_resource type="Script" path="res://scripts/Projectile.gd" id="1_c41lu"]
+[ext_resource type="Script" path="res://scripts/commons/Projectile.gd" id="1_c41lu"]
 [ext_resource type="Texture2D" uid="uid://bna44iso1nko7" path="res://assets/enemies/Flying eye/projectile_sprite.png" id="2_2pdkd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rk566"]

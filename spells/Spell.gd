@@ -5,11 +5,14 @@ class_name Spell
 @onready var animated_sprite:AnimatedSprite2D = $AnimatedSprite2D
 @onready var area:Area2D = $Area2D
 
+var casted = false
+
 func _ready():
 	top_level = true
 
 func cast():
 	animated_sprite.play("cast")
+	casted = true
 
 func _on_animated_sprite_2d_animation_finished():
 	destroy()

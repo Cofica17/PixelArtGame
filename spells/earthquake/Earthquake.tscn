@@ -1,6 +1,6 @@
-[gd_scene load_steps=25 format=3 uid="uid://dvwb1ku582gt6"]
+[gd_scene load_steps=25 format=3]
 
-[ext_resource type="Script" path="res://scripts/spells/Earthquake.gd" id="1_lr7o1"]
+[ext_resource type="Script" path="res://spells/earthquake/Earthquake.gd" id="1_lr7o1"]
 [ext_resource type="Texture2D" uid="uid://3shf5xgy26cs" path="res://assets/spells/eq_final.png" id="2_jbfu5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jbfvo"]
@@ -156,9 +156,6 @@ size = Vector2(89, 63)
 
 [node name="Earthquake" type="Node2D"]
 script = ExtResource("1_lr7o1")
-damage = null
-cooldown = null
-duration = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
