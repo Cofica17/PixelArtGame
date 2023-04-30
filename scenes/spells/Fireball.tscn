@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://dm31fbltdt6rb"]
+
+[ext_resource type="Script" path="res://scripts/spells/Fireball.gd" id="2_kotss"]
+[ext_resource type="Texture2D" uid="uid://b4i2sgh8ugujc" path="res://assets/spells/fire_ball_x1.png" id="2_ul3fn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xh380"]
+atlas = ExtResource("2_ul3fn")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7y8di"]
+atlas = ExtResource("2_ul3fn")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvwnr"]
+atlas = ExtResource("2_ul3fn")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_inhi0"]
+atlas = ExtResource("2_ul3fn")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfv6x"]
+atlas = ExtResource("2_ul3fn")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgkio"]
+atlas = ExtResource("2_ul3fn")
+region = Rect2(40, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lu6tu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xh380")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7y8di")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvwnr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_inhi0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfv6x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgkio")
+}],
+"loop": true,
+"name": &"cast",
+"speed": 18.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qlocq"]
+radius = 4.0
+
+[node name="Fireball" type="Node2D"]
+script = ExtResource("2_kotss")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0.569, 0.438)
+sprite_frames = SubResource("SpriteFrames_lu6tu")
+animation = &"cast"
+frame_progress = 0.554405
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_qlocq")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished" flags=18]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

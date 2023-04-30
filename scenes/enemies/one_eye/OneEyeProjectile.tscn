@@ -1,0 +1,93 @@
+[gd_scene load_steps=13 format=3 uid="uid://b0h0ilji36grq"]
+
+[ext_resource type="Script" path="res://scripts/Projectile.gd" id="1_c41lu"]
+[ext_resource type="Texture2D" uid="uid://bna44iso1nko7" path="res://assets/enemies/Flying eye/projectile_sprite.png" id="2_2pdkd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rk566"]
+atlas = ExtResource("2_2pdkd")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3g1t"]
+atlas = ExtResource("2_2pdkd")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gu0ih"]
+atlas = ExtResource("2_2pdkd")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nl3pb"]
+atlas = ExtResource("2_2pdkd")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etas3"]
+atlas = ExtResource("2_2pdkd")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhsej"]
+atlas = ExtResource("2_2pdkd")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjhmu"]
+atlas = ExtResource("2_2pdkd")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvl4d"]
+atlas = ExtResource("2_2pdkd")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y6sd2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rk566")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3g1t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gu0ih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nl3pb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_etas3")
+}],
+"loop": false,
+"name": &"destroy",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhsej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tjhmu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvl4d")
+}],
+"loop": true,
+"name": &"flight",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6rmdl"]
+radius = 11.0
+
+[node name="Projectile" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_c41lu")
+speed = 220
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_y6sd2")
+animation = &"flight"
+autoplay = "flight"
+frame_progress = 0.908016
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6rmdl")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished" flags=18]

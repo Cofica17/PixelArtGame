@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://jcjfmqpqkw4c"]
+
+[ext_resource type="Script" path="res://scripts/enemies/Enemy.gd" id="1_qxl2m"]
+[ext_resource type="Script" path="res://scripts/enemies/ContextBasedSteering.gd" id="2_05qgo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ebig0"]
+resource_local_to_scene = true
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j5j8x"]
+resource_local_to_scene = true
+radius = 30.0
+
+[node name="Enemy" type="CharacterBody2D"]
+position = Vector2(400, 200)
+motion_mode = 1
+script = ExtResource("1_qxl2m")
+disabled = null
+inactive = null
+enable_context_based_steering = null
+only_follow = null
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+animation = &""
+autoplay = "fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.5, 2)
+shape = SubResource("CircleShape2D_ebig0")
+
+[node name="AttackDetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackDetectionArea"]
+position = Vector2(2.294, 2.871)
+shape = SubResource("CircleShape2D_j5j8x")
+
+[node name="AttackCooldownTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ProjectileSpawnPoint" type="Node2D" parent="."]
+
+[node name="ContextBasedSteering" type="Node2D" parent="."]
+script = ExtResource("2_05qgo")
+steer_force = 0.8
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animation_frame_changed"]
+[connection signal="body_entered" from="AttackDetectionArea" to="." method="_on_attack_detection_area_body_entered"]
