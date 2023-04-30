@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cxfqnjusr1gnp"]
+[gd_scene load_steps=31 format=3 uid="uid://cxfqnjusr1gnp"]
 
 [ext_resource type="Texture2D" uid="uid://cjllk48fj7p3s" path="res://assets/world/Cliff.png" id="1_abrrn"]
 [ext_resource type="Texture2D" uid="uid://57nkgj1cn7t1" path="res://assets/world/Environment.png" id="2_04u54"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://ddhhhc3bptbm7" path="res://assets/world/Tileset.png" id="13_c80is"]
 [ext_resource type="PackedScene" uid="uid://b2uu2lbemwyil" path="res://scenes/enemies/Goblin.tscn" id="14_rj8up"]
 [ext_resource type="PackedScene" uid="uid://miwvgsrq7s7q" path="res://scenes/player/Player.tscn" id="15_wkdns"]
+[ext_resource type="PackedScene" uid="uid://8f0s0nrhqw4o" path="res://items/pickup_items/wood/Wood.tscn" id="16_aqxyd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u51pn"]
 texture = ExtResource("1_abrrn")
@@ -2468,23 +2469,26 @@ metadata/_edit_group_ = true
 
 [node name="Goblin" parent="." instance=ExtResource("14_rj8up")]
 z_index = 1
-inactive = false
+inactive = true
 
 [node name="Goblin2" parent="." instance=ExtResource("14_rj8up")]
 z_index = 1
 position = Vector2(420, 300)
-inactive = false
+inactive = true
 
 [node name="Goblin3" parent="." instance=ExtResource("14_rj8up")]
 z_index = 1
 position = Vector2(480, 100)
-inactive = false
+inactive = true
 
 [node name="Goblin4" parent="." instance=ExtResource("14_rj8up")]
 z_index = 1
 position = Vector2(800, 150)
-inactive = false
+inactive = true
 
 [node name="Player" parent="." instance=ExtResource("15_wkdns")]
 z_index = 2
 position = Vector2(100, 100)
+
+[node name="Wood" parent="." instance=ExtResource("16_aqxyd")]
+position = Vector2(286, 92)

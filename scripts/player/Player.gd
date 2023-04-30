@@ -52,6 +52,9 @@ func death():
 func apply_flash(flash):
 	animated_sprite.material.set_shader_parameter("flash", flash)
 
+func add_item(item_id):
+	pass
+
 func play_animation(anim):
 	animated_sprite.play(anim)
 
@@ -92,12 +95,6 @@ func _get_directional_animation_postfix(mov_vec):
 
 func _get_directional_animation_flip_h(mov_vec):
 	return mov_vec.x < 0
-
-func _on_animated_sprite_2d_animation_changed():
-	if not animated_sprite:
-		return
-	
-	cur_anim = animated_sprite.animation
 
 func get_can_dash():
 	return dash_cooldown_timer.is_stopped()
