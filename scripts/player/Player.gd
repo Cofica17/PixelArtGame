@@ -106,3 +106,6 @@ func get_is_critical():
 	var rng = RandomNumberGenerator.new()
 	var my_random_number = rng.randf_range(0.0, 1.0)
 	return my_random_number <= critical_chance
+
+func get_can_cast_spell():
+	return true

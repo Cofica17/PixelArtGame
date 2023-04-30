@@ -4,7 +4,8 @@ class_name SpellCast
 var spell_1 = preload("res://spells/lightning_strike/LightningStrikes.tscn")
 
 func enter():
-	#player.play_directional_animation("idle")
+	if not player.get_can_cast_spell():
+		return
 	var spell = spell_1.instantiate()
 	player.add_child(spell)
 	spell.cast()

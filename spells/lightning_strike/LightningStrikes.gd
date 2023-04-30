@@ -2,7 +2,6 @@ extends Spell
 class_name LightningStrike
 
 @export var damage = 50
-@export var cooldown = 1.0
 @export var strikes_count = 3.0
 
 var StrikeScene = preload("res://spells/lightning_strike/Strike.tscn")

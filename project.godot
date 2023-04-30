@@ -24,7 +24,7 @@ Game="*res://scripts/singletons/Game.gd"
 [display]
 
 window/stretch/mode="viewport"
-window/stretch/aspect="keep_height"
+window/stretch/aspect="expand"
 
 [input]
 

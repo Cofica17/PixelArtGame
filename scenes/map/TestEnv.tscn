@@ -2468,22 +2468,22 @@ metadata/_edit_group_ = true
 
 [node name="Goblin" parent="." instance=ExtResource("14_rj8up")]
 z_index = 1
-inactive = true
+inactive = false
 
 [node name="Goblin2" parent="." instance=ExtResource("14_rj8up")]
 z_index = 1
 position = Vector2(420, 300)
-inactive = true
+inactive = false
 
 [node name="Goblin3" parent="." instance=ExtResource("14_rj8up")]
 z_index = 1
 position = Vector2(480, 100)
-inactive = true
+inactive = false
 
 [node name="Goblin4" parent="." instance=ExtResource("14_rj8up")]
 z_index = 1
 position = Vector2(800, 150)
-inactive = true
+inactive = false
 
 [node name="Player" parent="." instance=ExtResource("15_wkdns")]
 z_index = 2

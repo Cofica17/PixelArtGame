@@ -9,10 +9,10 @@ var dir
 
 func cast():
 	super.cast()
-	var enemy_pos = Game.get_nearest_enemy_global_pos()
-	if not enemy_pos is Vector2:return
+	var enemy = Game.get_nearest_enemy()
+	if enemy.is_empty():return
 	global_position = player.global_position
-	dir = player.global_position.direction_to(enemy_pos)
+	dir = player.global_position.direction_to(enemy[0].global_position)
 
 func _physics_process(delta):
 	if dir:
