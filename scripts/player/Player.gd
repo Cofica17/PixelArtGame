@@ -59,42 +59,10 @@ func play_animation(anim):
 	animated_sprite.play(anim)
 
 func play_mouse_directional_animation(anim):
-	var look_vec = controls.get_look_vector()
-	
-	var postfix = _get_directional_animation_postfix(look_vec)
-	var mirror = _get_directional_animation_flip_h(look_vec)
-	
-	animated_sprite.play(anim+postfix)
-	animated_sprite.flip_h = mirror
+	animated_sprite.play_mouse_directional_animation(anim)
 
 func play_directional_animation(anim):
-	var mov_vec = controls.get_movement_vector()
-	
-	if anim == "idle" or anim == "attack1" or anim == "attack2":
-		mov_vec = controls.get_last_directional_movement_vector()
-	
-	var postfix = _get_directional_animation_postfix(mov_vec)
-	var mirror = _get_directional_animation_flip_h(mov_vec)
-	
-	animated_sprite.play(anim+postfix)
-	animated_sprite.flip_h = mirror
-
-func _get_directional_animation_postfix(mov_vec):
-	var postfix = "_side"
-	if mov_vec.x != 0 and mov_vec.y < 0:
-		postfix = "_backside"
-	elif mov_vec.x != 0 and mov_vec.y > 0:
-		postfix = "_frontside"
-	elif mov_vec.x > 0 or mov_vec.x < 0:
-		postfix = "_side"
-	elif mov_vec.y > 0:
-		postfix = "_front"
-	elif mov_vec.y < 0:
-		postfix = "_back"
-	return postfix
-
-func _get_directional_animation_flip_h(mov_vec):
-	return mov_vec.x < 0
+	animated_sprite.play_directional_animation(anim)
 
 func get_can_dash():
 	return dash_cooldown_timer.is_stopped()
