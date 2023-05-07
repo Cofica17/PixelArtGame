@@ -1,0 +1,12 @@
+{
+	"goblin" : {
+		"drop_table" : [
+			{
+				"item_name" : "wood",
+				"min_amount" : 1,
+				"max_amount" : 5,
+				"drop_chance" : 0.5
+			}
+		]
+	}
+}

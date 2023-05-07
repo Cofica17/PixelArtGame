@@ -4,6 +4,7 @@ extends Item
 var go_to_player = false
 var travel_speed = 5.0
 var pickup_distance = 20
+var amount:int = 1
 
 func _physics_process(delta):
 	if go_to_player:
@@ -18,4 +19,4 @@ func _on_area_2d_body_entered(body):
 
 func pickup():
 	queue_free()
-	player.add_item(item_id)
+	player.add_item(item_id, amount)

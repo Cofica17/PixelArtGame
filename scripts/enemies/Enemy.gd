@@ -2,6 +2,7 @@
 extends CharacterBody2D
 class_name Enemy
 
+@export var enemy_name_id := "enemy"
 @export var disabled = false
 @export var inactive = false
 @export var enable_context_based_steering = true
@@ -28,11 +29,13 @@ class_name Enemy
 var damage_taken = 0
 var dead = false
 var _last_dir_towards_player = Vector2.ZERO
+var drop_table:DropTable
 
 func _ready():
 	add_to_group("enemy")
 	attack_cooldown_timer.wait_time = attack_cooldown
 	collision_shape.disabled = disabled
+	drop_table = DropTable.new(enemy_name_id)
 
 func _set_attack_range(value):
 	if not $AttackDetectionArea/CollisionShape2D:
@@ -87,6 +90,12 @@ func die():
 	collision_shape.set_deferred("disabled", true)
 	dead = true
 	remove_from_group("enemy")
+	check_for_drops()
+
+func check_for_drops():
+	for item in drop_table.items:
+		if Utilities.get_random_float_number(0.0, 1.0) <= item.drop_chance:
+			Game.spawn_item(item, global_position)
 
 func _create_dmg_number_lbl(dmg):
 	var lbl:Label = damage_number_lbl.duplicate(true)

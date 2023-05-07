@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 InputBuffer="*res://scripts/singletons/InputBuffer.gd"
 Projectiles="*res://scripts/commons/Projectiles.gd"
 Game="*res://scripts/singletons/Game.gd"
+Utilities="*res://scripts/singletons/Utilities.gd"
 
 [display]
 

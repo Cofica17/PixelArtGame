@@ -240,9 +240,12 @@ resource_local_to_scene = true
 radius = 30.0
 
 [node name="Goblin" instance=ExtResource("1_qctqm")]
+enemy_name_id = "goblin"
 disabled = false
+inactive = false
 enable_context_based_steering = true
 health = 100.0
+only_follow = false
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_icxmp")

@@ -1,5 +1,12 @@
 extends Node
 
+func spawn_item(drop_table_item:DropTableItem, spawn_pos):
+	var ItemScene = Utilities.get_item_scene(drop_table_item.item_name)
+	var item = ItemScene.instantiate()
+	add_child(item)
+	item.amount = Utilities.get_random_int_number(drop_table_item.min_amount, drop_table_item.max_amount)
+	item.global_position = spawn_pos
+	print(item.amount)
 
 func get_nearest_enemy(num_of_enemies:int=1):
 	var enemies = get_tree().get_nodes_in_group("enemy")

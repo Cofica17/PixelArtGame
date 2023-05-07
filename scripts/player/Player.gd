@@ -52,7 +52,7 @@ func death():
 func apply_flash(flash):
 	animated_sprite.material.set_shader_parameter("flash", flash)
 
-func add_item(item_id):
+func add_item(item_id, amount):
 	pass
 
 func play_animation(anim):
@@ -69,6 +69,7 @@ func get_can_dash():
 
 func get_is_critical():
 	var rng = RandomNumberGenerator.new()
+	rng.randomize()
 	var my_random_number = rng.randf_range(0.0, 1.0)
 	return my_random_number <= critical_chance
 
